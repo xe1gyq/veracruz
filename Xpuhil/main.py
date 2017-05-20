@@ -27,6 +27,7 @@ def exitHandler():
         dweetiodatasource['alive'] = "0"
         dweetiodatasource['luxes'] =  0
         dweetiodatasource['message'] = "None"
+        dweetiodatasource['line2'] = "None"
         dweepy.dweet_for(dweetiothingname, dweetiodatasource)
 	sys.exit(0)
 
@@ -42,16 +43,18 @@ if __name__ == '__main__':
         luxes = light.value()
         buttonvalue = button.value()
 
-        print(button.name(), ' value is ', button.value())
-        dweetiodatasource['alive'] = buttonvalue
-        dweetiodatasource['luxes'] =  luxes
-        dweetiodatasource['message'] = message
-        dweepy.dweet_for(dweetiothingname, dweetiodatasource)
-
         display.setColor(255, 0, 0)
         display.setCursor(0,0)
         display.write(message)
         display.setCursor(1,0)
-        display.write("Button is " + str(button.value()))
+        line2 = "Button is " + str(button.value())
+        display.write(line2)
+
+        print(button.name(), ' value is ', button.value())
+        dweetiodatasource['alive'] = buttonvalue
+        dweetiodatasource['luxes'] =  luxes
+        dweetiodatasource['message'] = message
+        dweetiodatasource['line2'] = line2
+        dweepy.dweet_for(dweetiothingname, dweetiodatasource)
 
         time.sleep(1)

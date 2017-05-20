@@ -7,9 +7,11 @@ import sys
 import time
 
 from upm import pyupm_grove as grove
+from upm import pyupm_jhd1313m1 as lcd
 
 light = grove.GroveLight(0)
 button = grove.GroveButton(8)
+display = lcd.Jhd1313m1(0, 0x3E, 0x62)
 
 dweetiodatasource = {}
 dweetiothingname = "ilab_xpuhil"
@@ -43,5 +45,9 @@ if __name__ == '__main__':
         dweetiodatasource['luxes'] =  luxes
         dweetiodatasource['message'] = message
         dweepy.dweet_for(dweetiothingname, dweetiodatasource)
+
+        display.setColor(255, 0, 0)
+        display.setCursor(0,0)
+        display.write(message)
 
         time.sleep(1)

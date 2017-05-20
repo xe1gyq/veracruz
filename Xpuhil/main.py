@@ -51,5 +51,7 @@ if __name__ == '__main__':
         display.setColor(255, 0, 0)
         display.setCursor(0,0)
         display.write(message)
+        display.setCursor(1,0)
+        display.write("Button is " + str(button.value()))
 
         time.sleep(1)

@@ -9,6 +9,7 @@ import time
 from upm import pyupm_grove as grove
 
 light = grove.GroveLight(0)
+button = grove.GroveButton(8)
 
 dweetiodatasource = {}
 dweetiothingname = "ilab_xpuhil"
@@ -35,10 +36,12 @@ if __name__ == '__main__':
     while True:
 
         luxes = light.value()
+        buttonvalue = button.value()
 
-        dweetiodatasource['alive'] = "1"
+        print(button.name(), ' value is ', button.value())
+        dweetiodatasource['alive'] = buttonvalue
         dweetiodatasource['luxes'] =  luxes
         dweetiodatasource['message'] = message
         dweepy.dweet_for(dweetiothingname, dweetiodatasource)
 
-        time.sleep(2)
+        time.sleep(1)

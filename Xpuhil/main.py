@@ -6,8 +6,10 @@ import signal
 import sys
 import time
 
-from upm import pyupm_grove as grove
-from upm import pyupm_jhd1313m1 as lcd
+#from upm import pyupm_grove as grove
+#from upm import pyupm_jhd1313m1 as lcd
+import pyupm_grove as grove
+import pyupm_i2clcd as lcd
 
 light = grove.GroveLight(0)
 button = grove.GroveButton(8)
